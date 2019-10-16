@@ -2,14 +2,17 @@
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity (name = "User")
+@Entity
+@Table(name = "User")
 public class User {
 
     private int id;
 
     private String email,password;
     @Id
+    @Column(name="id")
     public int getId() {
         return id;
     }

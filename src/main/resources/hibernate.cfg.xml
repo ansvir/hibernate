@@ -11,6 +11,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">iba-1993</property>
         <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping class="User"></mapping>
         <mapping class="Authority"></mapping>
 
