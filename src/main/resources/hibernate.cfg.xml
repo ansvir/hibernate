@@ -1,0 +1,21 @@
+<!--?xml version='1.0' encoding='utf-8'?-->
+
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/user10</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">iba-1993</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping class="User"></mapping>
+        <mapping class="Authority"></mapping>
+
+
+    </session-factory>
+
+
+</hibernate-configuration>
