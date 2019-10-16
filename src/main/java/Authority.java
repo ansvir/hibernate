@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "authority")
 public class Authority {
 
     private int id;
@@ -24,12 +25,7 @@ public class Authority {
         this.name = name;
     }
 
-    @JoinTable(name="Table",
-            joinColumns=@JoinColumn(name="auth_id"),
-            inverseJoinColumns = @JoinColumn(name="user_id")
-    )
-
-    @ManyToMany
+    @ManyToMany(mappedBy = "authority")
     public Set<User> getUser() {
         return this.users;
     }

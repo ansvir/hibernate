@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     private int id;
@@ -25,7 +26,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    @Column(name="passsword")
+    @Column(name="password")
     public String getPassword() {
         return password;
     }
@@ -33,7 +34,7 @@ public class User {
         this.password = password;
     }
 
-    @JoinTable(name="Table",
+    @JoinTable(name="table",
             joinColumns=@JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="auth_id")
     )
