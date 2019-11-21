@@ -1,17 +1,18 @@
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name="user")
 public class User {
 
     private int id;
-    private Set<Authority> auths=new HashSet<Authority>(0);
     private String email,password;
-    @Id
+    private Set<Authority> authorities = new HashSet<Authority>();
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -26,6 +27,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Column(name="password")
     public String getPassword() {
         return password;
@@ -34,16 +36,17 @@ public class User {
         this.password = password;
     }
 
-    @JoinTable(name="table",
-            joinColumns=@JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="auth_id")
-    )
     @ManyToMany
-    public Set<Authority> getAuthority() {
-        return this.auths;
+    @JoinTable(name="permission",
+            joinColumns=@JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "auth_id")
+    )
+    public Set<Authority> getAuthorities() {
+        return this.authorities;
     }
-
-    public void setAuthority(Set<Authority> auths) {
-        this.auths = auths;
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+    public void addAuthority(Authority authority) { this.authorities.add(authority);
     }
 }
