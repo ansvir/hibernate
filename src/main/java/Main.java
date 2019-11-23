@@ -41,6 +41,7 @@ public class Main {
         }
         catch (HibernateException he) {
             System.out.println("Save failed");
+            he.printStackTrace();
         }
 
         t.commit();
