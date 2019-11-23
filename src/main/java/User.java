@@ -1,5 +1,6 @@
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -48,5 +49,40 @@ public class User {
         this.authorities = authorities;
     }
     public void addAuthority(Authority authority) { this.authorities.add(authority);
+    }
+
+    @Override
+    public String toString() {
+        String result=this.id+", "+this.email+", "+this.password+", authorities: \n";
+        for(Authority a: this.authorities)
+        {
+            result+=a.toString();
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this==o) return true;
+
+        if(!(o instanceof User)) return false;
+
+        User user=(User) o;
+
+        return this.id==user.id &&
+                this.email.equals(user.email) &&
+                this.password.equals(user.password) &&
+                this.authorities.equals(user.authorities);
+    }
+
+    @Override
+    public int hashCode() {
+        int result=17;
+        result=result*31+this.id;
+        result=result*31+this.email.hashCode();
+        result=result*31+this.password.hashCode();
+        result=result*31+this.authorities.hashCode();
+        return result;
     }
 }
