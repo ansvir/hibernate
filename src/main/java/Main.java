@@ -14,7 +14,6 @@ public class Main {
 
         User u1=new User ();
         User u2=new User ();
-        User u2Eq=new User();
         Authority a1=new Authority();
         Authority a2=new Authority();
         Authority a3=new Authority();
@@ -23,8 +22,6 @@ public class Main {
         u1.setPassword("1245");
         u2.setEmail("mikhail@lhgfl.com");
         u2.setPassword("5421");
-        u2Eq.setEmail("mikhail@lhgfl.com");
-        u2Eq.setPassword("5421");
         a1.setName("create");
         a2.setName("update");
         a3.setName("insert");
@@ -33,11 +30,6 @@ public class Main {
         u2.addAuthority(a1);
         u2.addAuthority(a2);
         u2.addAuthority(a3);
-        u2Eq.addAuthority(a1);
-        u2Eq.addAuthority(a2);
-        u2Eq.addAuthority(a3);
-
-        System.out.println(u2.equals(u2Eq));
 
         try {
             session.save(u1);
